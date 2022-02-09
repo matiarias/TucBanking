@@ -81,7 +81,7 @@ const validarDatos = function () {
       localStorage.setItem("usuarioLogeado", JSON.stringify(result[0].username)); //resultado unico
 
 
-      location.replace("./pages/home.html");
+      location.replace("./pages/movimiento.html");
 
     } else {
       alert("Email o contraseña incorrecto, HOLI"); //puse holi y dowow para identificar donde saltaba el error
