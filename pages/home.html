@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="shortcut icon" href="favicon.png" type="image/png" /> -->
+    <!-- LA LINEA DE ABAJO ES EL CSS DE BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>TucBanking Home</title>
+  </head>
+
+  <body class="body_home">
+    <header>
+      <nav class="navbar">
+        <div class="title-logo-nav">
+          <a href="#"><img src="../assets/pngwing.com.png" alt="img-logo" /></a>
+          <h3>TucBanking</h3>
+        </div>
+
+        <div class="buttons-navbar">
+          <a class="button1" href="./movimiento.html">
+            <button
+              id="button_movimiento"
+              type="button"
+              class="btn btn-warning me-3"
+            >
+              + Agregar movimiento
+            </button>
+          </a>
+
+          <a class="button2" href="../index.html">
+            <button
+              id="button_cerrar_sesion"
+              type="button"
+              class="btn btn-secondary me-3"
+            >
+              Cerrar sesión
+            </button>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 mt-4">
+          <div class="card mb-3">
+            <div class="card-body p-4">
+              <h5 class="card-title text-center" id="NombreDeUsuario">¡Hola</h5>
+              <p class="card-text text-center">Tu presupuesto actual es de $ <span id="monto_presupuesto"></span></p>
+              <p class="card-text text-center">
+                <small id="UltimaFecha">
+                  Último movimiento el <span id="last_movimiento"></span>
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-center title_home">Historial de movimientos</h2>
+
+      <!-- ------------------------------ Tarjetas Historial --------------------------------- -->
+
+      <div class="container mt-3" id="contenedorHistorial"></div>
+      
+    </main>
+
+    <script src="../js/home.js"></script>
+  </body>
+  <footer></footer>
+</html>

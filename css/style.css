@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ------------------------------------------ login ------------------------------------------- */
+
+.body_login {
+  min-height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #66aa33,
+    #99cc33,
+    #41811e,
+    #222222,
+    #666666,
+    #e8e8e8
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_link {
+  text-decoration: none;
+  margin-left: 5px;
+  color: #2f7446;
+  font-weight: 600;
+}
+
+.login_link:hover {
+  color: #000;
+}
+
+.login_img {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* ------------------------------------ Pagina Registro -------------------------------------------- */
+
+.body_registro {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #041e43, #a99260);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_registro {
+  background-color: #a99260 !important;
+  color: #000 !important;
+  font-weight: 500 !important;
+}
+
+.link_registro {
+  text-decoration: none;
+  color: #a38b56;
+  font-weight: 600;
+}
+
+.link_registro:hover {
+  color: #4b3a16;
+}
+
+.img_registro {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------- Pagina Movimientos---------------------------------------- */
+
+.body_movimiento {
+  min-height: 100vh;
+  background: linear-gradient(
+    120deg,
+    #ff8e00,
+    #000000,
+    #955214,
+    #55601c,
+    #005172
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+.card_movi {
+  background-color: #3332;
+}
+
+.title_movimiento {
+  font-size: 2.3rem;
+}
+
+.parrafo_movimiento {
+  font-size: 1rem;
+}
+
+.section_carousel {
+  width: 100%;
+}
+.carousel-inner img {
+  height: 50vh;
+  object-fit: cover;
+}
+
+.label_mov {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.button_mov {
+  background-color: #a99260 !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------- Pagina Home ---------------------------------------- */
+
+.body_home {
+  min-height: 100vh;
+  background-color: #3332;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+header .navbar {
+  background: linear-gradient(120deg, #041e43, #a99260);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a img {
+  height: 100px;
+  width: 100px;
+}
+
+.title-logo-nav {
+  display: flex;
+  align-items: center;
+}
+
+.title-logo-nav h3 {
+  color: #fff;
+  font-size: 2rem;
+  margin-left: 10px;
+}
+
+.title_home {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+/* -------------------------------------- media queries ------------------------------------------- */
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  header .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar a img {
+    height: 70px;
+    width: 70px;
+  }
+
+  .title-logo-nav h3 {
+    font-size: 1.2rem;
+  }
+
+  .buttons-navbar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title_home {
+    font-size: 1.5rem;
+  }
+
+  .button1 {
+    margin-bottom: 10px;
+  }
+
+  .parrafo_index {
+    font-size: 0.8rem;
+  }
+
+  .login_link {
+    font-size: 0.9rem;
+  }
+
+  .title_movimiento {
+    font-size: 2rem;
+  }
+
+  .parrafo_movimiento {
+    font-size: 1rem;
+  }
+
+  .card_movi {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .navbar a img {
+    height: 70px;
+    width: 70px;
+  }
+  .title-logo-nav h3 {
+    font-size: 1.3rem;
+    margin-left: 5px;
+  }
+
+  .title_home {
+    font-size: 2rem;
+  }
+
+  .buttons-navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button1 {
+    margin-bottom: 10px;
+  }
+
+  .card_movi {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title_movimiento {
+    font-size: 2rem;
+  }
+
+  .parrafo_movimiento {
+    font-size: 1.1rem;
+  }
+}
