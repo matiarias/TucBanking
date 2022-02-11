@@ -17,24 +17,20 @@ if (document.URL.includes("home.html")) {
         console.log(eltipo, elconcepto, elmonto, lafecha);
 
         let div = document.createElement("div"); //crea un elemento div
-        div.id = "Tarjeta" + i; //Asigna un id diferente a cada div
-        div.classList.add('card', 'mb-3');
+        div.id = "Fila" + i; //Asigna un id diferente a cada div
+        div.classList.add('row');
         document.getElementById("contenedorHistorial").appendChild(div); //Selecciona como se llama el elemento por ese id, y el appenchild agrega un hijo
 
-
-
         let div1 = document.createElement("div");
-        div1.id = "Fila" + i;
-        div1.classList.add('row');
-        document.getElementById("Tarjeta" + i).appendChild(div1); // busco el elemento anterior
-
+        div1.id = "Columna" + i;
+        div1.classList.add('col-12', 'col-md-6', 'offset-md-3', 'col-lg-6', 'offset-lg-3');
+        document.getElementById("Fila" + i).appendChild(div1);
 
 
         let div2 = document.createElement("div");
-        div2.id = "Columna" + i;
-        div2.classList.add('col-12');
-        document.getElementById("Fila" + i).appendChild(div2);
-
+        div2.id = "Tarjeta" + i;
+        div2.classList.add('card', 'mb-3');
+        document.getElementById("Columna" + i).appendChild(div2); // busco el elemento anterior
 
 
         let div3 = document.createElement("div");
@@ -49,9 +45,9 @@ if (document.URL.includes("home.html")) {
             "<p class='card-text text-center'>" + "Concepto: " + elconcepto + "</p>" +
             "<p class='card-text text-center'><small class='text-muted'>" + lafecha + "</small></p>";
 
-        document.getElementById("Columna" + i).appendChild(div3);
+        document.getElementById("Tarjeta" + i).appendChild(div3);
 
-        //----------------- donde se colocará la fecha del último movimiento --------------------------
+        //--------------------- donde se colocará la fecha del último movimiento ----------------------
 
         let ultimoMov = document.querySelector('#last_movimiento')
         ultimoMov.innerHTML = historial[historial.length - 1].fecha.split("-").reverse().join("-");
@@ -76,6 +72,7 @@ if (document.URL.includes("home.html")) {
     };
 
     //Donde debe ir el monto del presupuesto le asigno la función
+
     let montoPresupuesto = document.querySelector('#monto_presupuesto')
     montoPresupuesto.innerHTML = calcularPresupuesto(historial);
 
@@ -84,7 +81,7 @@ if (document.URL.includes("home.html")) {
 
     NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogeado) + "!";
 
-    // ------------------------ eventos boton movimientos y boton cerrar sesión ------------------------
+    // ------------------------ eventos botón movimientos y botón cerrar sesión ------------------------
 
     let buttonMovimiento = document.querySelector('#button_movimiento');
     buttonMovimiento.addEventListener('click', backToMovimientos);
