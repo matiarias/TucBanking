@@ -16,10 +16,10 @@ if (document.URL.includes("home.html")) {
 
         console.log(eltipo, elconcepto, elmonto, lafecha);
 
-        let div = document.createElement("div"); //crea un elemento div
+        let div = document.createElement("div");
         div.id = "Fila" + i; //Asigna un id diferente a cada div
         div.classList.add('row');
-        document.getElementById("contenedorHistorial").appendChild(div); //Selecciona como se llama el elemento por ese id, y el appenchild agrega un hijo
+        document.getElementById("contenedorHistorial").appendChild(div);
 
         let div1 = document.createElement("div");
         div1.id = "Columna" + i;
@@ -30,7 +30,7 @@ if (document.URL.includes("home.html")) {
         let div2 = document.createElement("div");
         div2.id = "Tarjeta" + i;
         div2.classList.add('card', 'mb-3');
-        document.getElementById("Columna" + i).appendChild(div2); // busco el elemento anterior
+        document.getElementById("Columna" + i).appendChild(div2);
 
 
         let div3 = document.createElement("div");
@@ -39,11 +39,24 @@ if (document.URL.includes("home.html")) {
 
         div3.classList.add('card-body');
 
-        div3.innerHTML =
-            "<h5 class='card-title text-center'>" + "$" + elmonto + "</h5>" +
-            "<p class='card-text text-center'>" + eltipo + "</p>" +
-            "<p class='card-text text-center'>" + "Concepto: " + elconcepto + "</p>" +
-            "<p class='card-text text-center'><small class='text-muted'>" + lafecha + "</small></p>";
+        div3.innerHTML = `
+
+        <div>
+           <div class="text-end">
+              <button class="btn btn-danger" onclick="">X</button>
+           </div>
+
+           <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
+           <p class='card-text text-center parrafo_historial'>  ${eltipo}  </p>
+           <p class='card-text text-center parrafo_historial'> Concepto: ${elconcepto} </p>
+           <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
+
+           <div class="text-center">
+              <button type="button" class="btn btn-success">Editar</button>
+           </div>
+        </div>
+
+        `;
 
         document.getElementById("Tarjeta" + i).appendChild(div3);
 
@@ -71,11 +84,27 @@ if (document.URL.includes("home.html")) {
         return valor;
     };
 
-    //Donde debe ir el monto del presupuesto le asigno la función
+    // ---------------- Donde debe ir el monto del presupuesto le asigno la función ---------------------
 
     let montoPresupuesto = document.querySelector('#monto_presupuesto')
     montoPresupuesto.innerHTML = calcularPresupuesto(historial);
 
+    // ------------------------- función para borrar card de historial --------------------------------
+
+    // function actualizarHistorial() {
+    //     localStorage.setItem("movimientos", JSON.stringify(movimientos));
+    //     div2.innerHTML = ''
+    //     // crearCardTarea();
+    // };
+
+    // function borrarCard(id) {
+
+    //     movimientos.splice(id, 1);
+    //     actualizarHistorial();
+
+    // };
+
+    // -----------------------------------------------------------------------------------------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
 
@@ -102,6 +131,7 @@ if (document.URL.includes("home.html")) {
 
         location.replace("../index.html");
     };
+
 
 };
 
