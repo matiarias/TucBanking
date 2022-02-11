@@ -23,6 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 .login_link {
@@ -75,7 +76,7 @@
   object-fit: cover;
 }
 
-/* ---------------------------------- Pagina Movimientos---------------------------------------- */
+/* ---------------------------------------- Pagina Movimientos --------------------------------------- */
 
 .body_movimiento {
   min-height: 100vh;
@@ -91,8 +92,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
   padding-bottom: 100px;
-  overflow: hidden;
 }
 
 .card_movi {
@@ -110,6 +111,7 @@
 .section_carousel {
   width: 100%;
 }
+
 .carousel-inner img {
   height: 50vh;
   object-fit: cover;
@@ -125,7 +127,7 @@
   color: #fff !important;
 }
 
-/* ---------------------------------------- Pagina Home ---------------------------------------- */
+/* ----------------------------------------- Pagina Home -------------------------------------------- */
 
 .body_home {
   min-height: 100vh;
@@ -216,6 +218,10 @@ header .navbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .body_movimiento {
+    padding-bottom: 0;
   }
 }
 

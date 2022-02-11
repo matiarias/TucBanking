@@ -84,7 +84,7 @@ if (document.URL.includes("home.html")) {
 
     NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogeado) + "!";
 
-    // -------------------------------------------------------------------------------------------------
+    // ------------------------ eventos boton movimientos y boton cerrar sesión ------------------------
 
     let buttonMovimiento = document.querySelector('#button_movimiento');
     buttonMovimiento.addEventListener('click', backToMovimientos);
