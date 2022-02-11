@@ -30,16 +30,21 @@ const agregarMovimiento = function () {
     }
 
     if (inputConcepto == "" || inputFecha == "" || inputMonto == "") {
+
         alert("Debe completar todos los campos");
+
     } else {
+
         movimientos.push(cuenta);
 
         localStorage.setItem("movimientos", JSON.stringify(movimientos));
 
         location.replace("./home.html");
-    }
+    };
 
-}
+};
+
+// -------------------------------------------------------------------------------------------------
 
 if (document.getElementById("formularioMovimiento") != null) {
     document.querySelector("#formularioMovimiento").addEventListener("submit", function (e) {
@@ -56,6 +61,6 @@ function volverHome(e) {
 
     location.replace("./home.html");
 
-}
+};
 
 // -----------------------------------------------------------------------------------------------------

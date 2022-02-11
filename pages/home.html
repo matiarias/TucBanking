@@ -25,25 +25,21 @@
         </div>
 
         <div class="buttons-navbar">
-          <a class="button1" href="./movimiento.html">
-            <button
-              id="button_movimiento"
-              type="button"
-              class="btn btn-warning me-3"
-            >
-              + Agregar movimiento
-            </button>
-          </a>
+          <button
+            id="button_movimiento"
+            type="button"
+            class="btn btn-warning me-3 button1"
+          >
+            + Agregar movimiento
+          </button>
 
-          <a class="button2" href="../index.html">
-            <button
-              id="button_cerrar_sesion"
-              type="button"
-              class="btn btn-secondary me-3"
-            >
-              Cerrar sesión
-            </button>
-          </a>
+          <button
+            id="button_cerrar_sesion"
+            type="button"
+            class="btn btn-secondary me-3 button2"
+          >
+            Cerrar sesión
+          </button>
         </div>
       </nav>
     </header>
@@ -54,7 +50,10 @@
           <div class="card mb-3">
             <div class="card-body p-4">
               <h5 class="card-title text-center" id="NombreDeUsuario">¡Hola</h5>
-              <p class="card-text text-center">Tu presupuesto actual es de $ <span id="monto_presupuesto"></span></p>
+              <p class="card-text text-center">
+                Tu presupuesto actual es de $
+                <span id="monto_presupuesto"></span>
+              </p>
               <p class="card-text text-center">
                 <small id="UltimaFecha">
                   Último movimiento el <span id="last_movimiento"></span>
@@ -70,7 +69,6 @@
       <!-- ------------------------------ Tarjetas Historial --------------------------------- -->
 
       <div class="container mt-3" id="contenedorHistorial"></div>
-      
     </main>
 
     <script src="../js/home.js"></script>

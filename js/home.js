@@ -84,7 +84,29 @@ if (document.URL.includes("home.html")) {
 
     NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogeado) + "!";
 
-}
+    // -------------------------------------------------------------------------------------------------
+
+    let buttonMovimiento = document.querySelector('#button_movimiento');
+    buttonMovimiento.addEventListener('click', backToMovimientos);
+
+    function backToMovimientos(e) {
+
+        console.log(e)
+
+        location.replace("./movimiento.html");
+    };
+
+    let buttonCerrarSesion = document.querySelector('#button_cerrar_sesion');
+    buttonCerrarSesion.addEventListener('click', backToLogin);
+
+    function backToLogin(e) {
+
+        console.log(e)
+
+        location.replace("../index.html");
+    };
+
+};
 
 // ------------------------------------------------------------------------------------------------------
 
