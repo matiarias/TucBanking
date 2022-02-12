@@ -91,20 +91,8 @@ if (document.URL.includes("home.html")) {
 
     // ------------------------- función para borrar card de historial --------------------------------
 
-    // function actualizarHistorial() {
-    //     localStorage.setItem("movimientos", JSON.stringify(movimientos));
-    //     div2.innerHTML = ''
-    //     // crearCardTarea();
-    // };
 
-    // function borrarCard(id) {
-
-    //     movimientos.splice(id, 1);
-    //     actualizarHistorial();
-
-    // };
-
-    // -----------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
 
