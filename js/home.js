@@ -18,18 +18,18 @@ if (document.URL.includes("home.html")) {
 
         let div = document.createElement("div");
         div.id = "Fila" + i; //Asigna un id diferente a cada div
-        div.classList.add('row');
+        div.classList.add('row',);
         document.getElementById("contenedorHistorial").appendChild(div);
 
         let div1 = document.createElement("div");
         div1.id = "Columna" + i;
-        div1.classList.add('col-12', 'col-md-6', 'offset-md-3', 'col-lg-6', 'offset-lg-3');
+        div1.classList.add('col-12', 'col-md-12', 'col-lg-12', 'd-flex', 'flex-column', 'flex-md-row', 'flex-lg-row');
         document.getElementById("Fila" + i).appendChild(div1);
 
 
         let div2 = document.createElement("div");
         div2.id = "Tarjeta" + i;
-        div2.classList.add('card', 'mb-3');
+        div2.classList.add('card', 'ms-3', 'mb-3', 'card-home');
         document.getElementById("Columna" + i).appendChild(div2);
 
 

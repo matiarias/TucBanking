@@ -131,7 +131,7 @@
 
 .body_home {
   min-height: 100vh;
-  background-color: #3332;
+  background-color: #3336;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -183,6 +183,10 @@ header .navbar {
 
 .parrafo_historial {
   font-size: 1.2rem;
+}
+
+.card-home {
+  width: 200px;
 }
 
 /* -------------------------------------- media queries ------------------------------------------- */
