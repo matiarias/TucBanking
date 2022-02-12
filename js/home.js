@@ -52,7 +52,7 @@ if (document.URL.includes("home.html")) {
            <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
 
            <div class="text-center">
-              <button type="button" class="btn btn-success">Editar</button>
+              <button id="button_editar" type="button" class="btn btn-success">Editar</button>
            </div>
         </div>
 
@@ -89,10 +89,26 @@ if (document.URL.includes("home.html")) {
     let montoPresupuesto = document.querySelector('#monto_presupuesto')
     montoPresupuesto.innerHTML = calcularPresupuesto(historial);
 
-    // ------------------------- función para borrar card de historial --------------------------------
+
+    // ---------------------- función para abrir el modal para editar card ------------------------
+
+    let myModal = new bootstrap.Modal(document.getElementById('editar_card'), {
+        keyboard: false
+    });
+
+    buttonEditar = document.querySelectorAll('#button_editar').forEach(element => {
+
+        element.addEventListener('click', event => {
+
+            console.log(event)
+            myModal.show()
+
+        });
+
+    });
 
 
-    // ----------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
 

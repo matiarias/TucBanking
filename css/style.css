@@ -186,6 +186,7 @@ header .navbar {
 }
 
 .card-home {
+  height: 320px;
   width: 200px;
 }
 
