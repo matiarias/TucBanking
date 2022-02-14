@@ -108,6 +108,10 @@ if (document.URL.includes("home.html")) {
     });
 
 
+    // ------------------------- función para editar cada card del home-historial ---------------------
+
+
+
     // ------------------------------------------------------------------------------------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
