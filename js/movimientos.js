@@ -44,7 +44,6 @@ const agregarMovimiento = function () {
 
 };
 
-// -------------------------------------------------------------------------------------------------
 
 if (document.getElementById("formularioMovimiento") != null) {
     document.querySelector("#formularioMovimiento").addEventListener("submit", function (e) {
@@ -52,6 +51,8 @@ if (document.getElementById("formularioMovimiento") != null) {
         agregarMovimiento();
     });
 }
+
+// ---------------------------------------------------------------------------------------------------
 
 let botonVolver = document.querySelector('#button_volver').addEventListener('click', volverHome);
 

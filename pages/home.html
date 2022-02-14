@@ -46,9 +46,7 @@
     <main>
       <div class="container">
         <div class="row">
-          <div
-            class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-4"
-          >
+          <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-4">
             <div class="card card_presupuesto mb-3">
               <div class="card-body p-3">
                 <h5
@@ -89,6 +87,7 @@
     <div class="modal fade" tabindex="-1" id="editar_card">
       <div class="modal-dialog modal-dialog-centered mx-auto">
         <div class="modal-content">
+          
           <div class="modal-header">
             <h5 class="modal-title">Edita tu Presupuesto</h5>
 
@@ -136,10 +135,20 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn button_modal1" data-bs-dismiss="modal">
+            <button
+              type="button"
+              class="btn button_modal1"
+              data-bs-dismiss="modal"
+            >
               Cerrar
             </button>
-            <button type="button" class="btn button_modal2">Aceptar</button>
+            <button
+              id="button_editar_modal"
+              type="button"
+              class="btn button_modal2"
+            >
+              Aceptar
+            </button>
           </div>
         </div>
       </div>

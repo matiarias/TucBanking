@@ -66,7 +66,7 @@ if (document.URL.includes("home.html")) {
         ultimoMov.innerHTML = historial[historial.length - 1].fecha.split("-").reverse().join("-");
     }
 
-    // --- functión para calcular y mnostrar la suma del ingreso o egreso de todos mis movimientos ------
+    // --- functión para calcular y mostrar la suma del ingreso o egreso de todos mis movimientos ------
 
     const calcularPresupuesto = (array) => {
         let valor = 0;
@@ -109,6 +109,16 @@ if (document.URL.includes("home.html")) {
 
 
     // ------------------------- función para editar cada card del home-historial ---------------------
+
+    let inputTipoModal = document.querySelector("#input_tipo_modal").value;
+    let inputConceptoModal = document.querySelector("#input_concepto_modal").value;
+    let inputFechaModal = document.querySelector("#input_fecha_modal").value;
+    let inputMontoModal = document.querySelector("#input_monto_modal").value;
+
+    const editarCard = function () {
+
+
+    };
 
 
 
