@@ -43,7 +43,7 @@ if (document.URL.includes("home.html")) {
 
         <div>
            <div class="text-end">
-              <button class="btn btn-danger" onclick="">X</button>
+              <button class="btn button_eliminar_card" onclick="">X</button>
            </div>
 
            <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
@@ -52,7 +52,7 @@ if (document.URL.includes("home.html")) {
            <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
 
            <div class="text-center">
-              <button id="button_editar" type="button" class="btn btn-success">Editar</button>
+              <button id="button_editar" type="button" class="btn button_editar_card">Editar</button>
            </div>
         </div>
 

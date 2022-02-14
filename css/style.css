@@ -131,10 +131,9 @@
 
 .body_home {
   min-height: 100vh;
-  background-color: #3336;
+  background-color: #3334;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 header .navbar {
@@ -158,6 +157,16 @@ header .navbar {
   color: #fff;
   font-size: 2rem;
   margin-left: 10px;
+}
+
+.button1 {
+  background-color: #2d4a74;
+  color: #fff !important;
+}
+
+.button2 {
+  background-color: #42810e;
+  color: #fff !important;
 }
 
 .title_home {
@@ -190,6 +199,26 @@ header .navbar {
   width: 200px;
 }
 
+.button_eliminar_card {
+  background-color: #42810e;
+  color: #fff;
+}
+
+.button_editar_card {
+  background-color: #2d4a74;
+  color: #fff;
+}
+
+.button_modal1 {
+  background-color: #79a128;
+  color: #fff;
+}
+
+.button_modal2 {
+  background-color: #a99260;
+  color: #fff;
+}
+
 /* -------------------------------------- media queries ------------------------------------------- */
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
@@ -216,7 +245,7 @@ header .navbar {
   }
 
   .title_home {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .button1 {
@@ -247,6 +276,10 @@ header .navbar {
 
   .body_movimiento {
     padding-bottom: 0;
+  }
+
+  .card-home {
+    width: 250px;
   }
 }
 
