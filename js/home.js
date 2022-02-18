@@ -43,7 +43,7 @@ if (document.URL.includes("home.html")) {
 
         <div>
            <div class="text-end">
-              <button class="btn button_eliminar_card" onclick="">X</button>
+              <button id="button_eliminar" class="btn button_eliminar_card">X</button>
            </div>
 
            <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
@@ -120,18 +120,33 @@ if (document.URL.includes("home.html")) {
 
     };
 
+    // --------------------------- función para borrar card del historial --------------------------
+
+
+
+    const borrarCard = function () {
+
+        console.log('el evento para borrar card esta funcionando bien')
+    };
+
+    let buttonDeleteCard = document.querySelectorAll('#button_eliminar')
+    buttonDeleteCard.forEach(element => {
+
+        element.addEventListener('click', borrarCard)
+
+    });
+
 
 
     // ------------------------------------------------------------------------------------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
 
-    NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogeado) + "!";
+    NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogueado) + "!";
 
     // ------------------------ eventos botón movimientos y botón cerrar sesión ------------------------
 
-    let buttonMovimiento = document.querySelector('#button_movimiento');
-    buttonMovimiento.addEventListener('click', backToMovimientos);
+
 
     function backToMovimientos(e) {
 
@@ -140,15 +155,22 @@ if (document.URL.includes("home.html")) {
         location.replace("./movimiento.html");
     };
 
-    let buttonCerrarSesion = document.querySelector('#button_cerrar_sesion');
-    buttonCerrarSesion.addEventListener('click', backToLogin);
+    let buttonMovimiento = document.querySelector('#button_movimiento');
+    buttonMovimiento.addEventListener('click', backToMovimientos);
+
+    // ---------------------------------------------------------------------------------------------
 
     function backToLogin(e) {
 
         console.log(e)
 
+        localStorage.removeItem('usuarioLogueado')
+
         location.replace("../index.html");
     };
+
+    let buttonCerrarSesion = document.querySelector('#button_cerrar_sesion');
+    buttonCerrarSesion.addEventListener('click', backToLogin);
 
 
 };

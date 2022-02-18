@@ -1,11 +1,12 @@
 //-------------------------------------Pagina Movimientos --------------------------------------------
 
 class Movimiento {
-    constructor(tipo, concepto, fecha, monto) {
+    constructor(tipo, concepto, fecha, monto, id) {
         this.tipo = tipo;
         this.concepto = concepto;
         this.fecha = fecha;
         this.monto = monto;
+        this.id = id;
     }
 }
 
@@ -22,12 +23,15 @@ const agregarMovimiento = function () {
         movimientos = JSON.parse(localStorage.movimientos);
     }
 
+    let idCard = new Date().getTime();
+
     let cuenta = {
         tipo: inputTipo,
         concepto: inputConcepto,
         fecha: inputFecha,
-        monto: inputMonto
-    }
+        monto: inputMonto,
+        idCard
+    };
 
     if (inputConcepto == "" || inputFecha == "" || inputMonto == "") {
 

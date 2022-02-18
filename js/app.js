@@ -25,7 +25,7 @@ const validarDatos = function () {
       });
 
 
-      localStorage.setItem("usuarioLogeado", JSON.stringify(result[0].username)); //resultado unico
+      localStorage.setItem("usuarioLogueado", JSON.stringify(result[0].username)); //resultado unico
 
 
       location.replace("./pages/movimiento.html");
