@@ -1,6 +1,8 @@
 //---------------------------------- HISTORIAL - HOME --------------------------------------------
 
-let historial = JSON.parse(localStorage.movimientos) || [];
+let historial = JSON.parse(localStorage.getItem('movimientos')) || [];
+
+let movimientos = JSON.parse(localStorage.getItem('movimientos')) || [];
 
 if (document.URL.includes("home.html")) {
 
@@ -8,13 +10,15 @@ if (document.URL.includes("home.html")) {
 
     for (let i = 0; i < historial.length; i++) {
 
+
         const eltipo = historial[i].tipo;
         const elconcepto = historial[i].concepto;
         const elmonto = historial[i].monto;
         const lafecha = historial[i].fecha;
+        const identificador = historial[i].id;
 
 
-        console.log(eltipo, elconcepto, elmonto, lafecha);
+        console.log(eltipo, elconcepto, elmonto, lafecha, identificador);
 
         let div = document.createElement("div");
         div.id = "Fila" + i; //Asigna un id diferente a cada div
@@ -60,11 +64,14 @@ if (document.URL.includes("home.html")) {
 
         document.getElementById("Tarjeta" + i).appendChild(div3);
 
+
         //--------------------- donde se colocará la fecha del último movimiento ----------------------
 
         let ultimoMov = document.querySelector('#last_movimiento')
         ultimoMov.innerHTML = historial[historial.length - 1].fecha.split("-").reverse().join("-");
-    }
+
+
+    };
 
     // --- functión para calcular y mostrar la suma del ingreso o egreso de todos mis movimientos ------
 
@@ -120,25 +127,7 @@ if (document.URL.includes("home.html")) {
 
     };
 
-    // --------------------------- función para borrar card del historial --------------------------
-
-
-
-    const borrarCard = function () {
-
-        console.log('el evento para borrar card esta funcionando bien')
-    };
-
-    let buttonDeleteCard = document.querySelectorAll('#button_eliminar')
-    buttonDeleteCard.forEach(element => {
-
-        element.addEventListener('click', borrarCard)
-
-    });
-
-
-
-    // ------------------------------------------------------------------------------------------------
+    // ---------------- Mostrar el nombre del usuario en la card del presupuesto -------------------
 
     let NombreDeUsuario = document.getElementById('NombreDeUsuario');
 
@@ -172,8 +161,25 @@ if (document.URL.includes("home.html")) {
     let buttonCerrarSesion = document.querySelector('#button_cerrar_sesion');
     buttonCerrarSesion.addEventListener('click', backToLogin);
 
+    // ------------------------------ función para borrar card del historial -----------------------------
+
+    const borrarCard = function () {
+
+        let validar = confirm('Está seguro de eliminar este movimiento del historial?');
+
+        if (validar) {
+
+
+
+            // movimientos.splice(indice, 1);
+            // localStorage.setItem("movimientos", JSON.stringify(movimientos));
+            // agregarMovimiento();
+            // alert('Movimiento Eliminado')
+        };
+
+    };
 
 };
 
-// ------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 

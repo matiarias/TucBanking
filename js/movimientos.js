@@ -30,7 +30,7 @@ const agregarMovimiento = function () {
         concepto: inputConcepto,
         fecha: inputFecha,
         monto: inputMonto,
-        idCard
+        id: idCard
     };
 
     if (inputConcepto == "" || inputFecha == "" || inputMonto == "") {
