@@ -5,7 +5,7 @@ let historial = JSON.parse(localStorage.getItem("movimientos")) || [];
 let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
 
 //Manejo de modal y campos------------------------------------------------
-let itemIdEditado;
+let itemIdEditado; //Creo una variable global para guardar el id del movimiento
 
 let myModal = new bootstrap.Modal(document.getElementById("editar_card"), {
   keyboard: false,
@@ -16,14 +16,14 @@ let inputConceptoModal = document.querySelector("#input_concepto_modal");
 let inputFechaModal = document.querySelector("#input_fecha_modal");
 let inputMontoModal = document.querySelector("#input_monto_modal");
 
-let botonUpdate = document.querySelector("#button_editar_modal");
+let botonUpdate = document.querySelector("#button_editar_modal"); //capturo boton para guardar edición
 
 //---------------------------------------------------------------------
 
 if (document.URL.includes("home.html")) {
   console.log("Estoy en el home");
 
-  agregarMovimiento();
+  agregarMovimiento(); //función que está definida para cargar las cards cada vez que sea necesario
 
   // --- functión para calcular y mostrar la suma del ingreso o egreso de todos mis movimientos ------
 
@@ -66,11 +66,11 @@ if (document.URL.includes("home.html")) {
   // --------- función para editar cada card del home-historial Modificado por Pablo------------
 
   function editarCard(indice) {
-    itemIdEditado = indice;
-    myModal.show();
-    inputTipoModal.value = historial[itemIdEditado].tipo;
-    console.log(inputTipoModal);
+    itemIdEditado = indice; //guardo indice en variable global
+    myModal.show(); //abro modal
 
+    //asigno valor del movimiento a los campos del modal
+    inputTipoModal.value = historial[itemIdEditado].tipo;
     inputConceptoModal.value = historial[itemIdEditado].concepto;
     console.log(inputConceptoModal);
     inputMontoModal.value = historial[itemIdEditado].monto;
@@ -78,18 +78,20 @@ if (document.URL.includes("home.html")) {
   }
 
   function updateModal() {
+    //creo un nuevo objeto con los datos del movimiento editado
     let itemModificado = {
       concepto: inputConceptoModal.value,
       fecha: inputFechaModal.value,
       monto: inputMontoModal.value,
       tipo: inputTipoModal.value,
     };
+
+    //modifico el movimiento en el arreglo original de los movimientos
     historial[itemIdEditado] = itemModificado;
-    console.log(historial[itemIdEditado]);
-    localStorage.setItem("movimientos", JSON.stringify(historial));
-    agregarMovimiento();
-    montoPresupuesto.innerHTML = calcularPresupuesto(historial);
-    myModal.hide();
+    localStorage.setItem("movimientos", JSON.stringify(historial)); //Guardo el nuevo arreglo en localStorage
+    agregarMovimiento(); //cargo las tarjetas con los cambios
+    montoPresupuesto.innerHTML = calcularPresupuesto(historial); //Actualizo el resumen de movimientos
+    myModal.hide(); //Cierro modal
   }
 
   // ---------------- Mostrar el nombre del usuario en la card del presupuesto -------------------
@@ -144,6 +146,7 @@ if (document.URL.includes("home.html")) {
 
 //código Pablo-------------------------------------------------
 
+//Funcion para cargar las tarjetas de movimientos
 function agregarMovimiento() {
   document.querySelector("#contenedorHistorial").innerHTML = "";
 
@@ -216,7 +219,7 @@ function agregarMovimiento() {
   }
 }
 
-//Capturo boton del modal donde se guarda la edición
+//Escucho el evento click del boton del modal para guardar cambios
 botonUpdate.addEventListener("click", () => {
   updateModal();
 });
