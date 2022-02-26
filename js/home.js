@@ -1,185 +1,222 @@
 //---------------------------------- HISTORIAL - HOME --------------------------------------------
 
-let historial = JSON.parse(localStorage.getItem('movimientos')) || [];
+let historial = JSON.parse(localStorage.getItem("movimientos")) || [];
 
-let movimientos = JSON.parse(localStorage.getItem('movimientos')) || [];
+let movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
+
+//Manejo de modal y campos------------------------------------------------
+let itemIdEditado;
+
+let myModal = new bootstrap.Modal(document.getElementById("editar_card"), {
+  keyboard: false,
+});
+let inputTipoModal = document.querySelector("#input_tipo_modal");
+let inputConceptoModal = document.querySelector("#input_concepto_modal");
+
+let inputFechaModal = document.querySelector("#input_fecha_modal");
+let inputMontoModal = document.querySelector("#input_monto_modal");
+
+let botonUpdate = document.querySelector("#button_editar_modal");
+
+//---------------------------------------------------------------------
 
 if (document.URL.includes("home.html")) {
+  console.log("Estoy en el home");
 
-    console.log("Estoy en el home");
+  agregarMovimiento();
 
-    for (let i = 0; i < historial.length; i++) {
+  // --- functión para calcular y mostrar la suma del ingreso o egreso de todos mis movimientos ------
 
+  const calcularPresupuesto = (array) => {
+    let valor = 0;
 
-        const eltipo = historial[i].tipo;
-        const elconcepto = historial[i].concepto;
-        const elmonto = historial[i].monto;
-        const lafecha = historial[i].fecha;
-        const identificador = historial[i].id;
+    for (let i = 0; i < array.length; i++) {
+      switch (array[i].tipo) {
+        case "Ingreso":
+          valor += parseFloat(array[i].monto);
+          break;
+        case "Egreso":
+          valor -= parseFloat(array[i].monto);
+          break;
+      }
+    }
+    return valor;
+  };
 
+  // ---------------- Donde debe ir el monto del presupuesto le asigno la función ---------------------
 
-        console.log(eltipo, elconcepto, elmonto, lafecha, identificador);
+  let montoPresupuesto = document.querySelector("#monto_presupuesto");
+  montoPresupuesto.innerHTML = calcularPresupuesto(historial);
 
-        let div = document.createElement("div");
-        div.id = "Fila" + i; //Asigna un id diferente a cada div
-        div.classList.add('row',);
-        document.getElementById("contenedorHistorial").appendChild(div);
+  // ---------------------- función para abrir el modal para editar card ------------------------
 
-        let div1 = document.createElement("div");
-        div1.id = "Columna" + i;
-        div1.classList.add('col-12', 'col-md-12', 'col-lg-12', 'd-flex', 'flex-column', 'flex-md-row', 'flex-lg-row');
-        document.getElementById("Fila" + i).appendChild(div1);
+  //   let myModal = new bootstrap.Modal(document.getElementById("editar_card"), {
+  //     keyboard: false,
+  //   });
 
+  //   buttonEditar = document
+  //     .querySelectorAll("#button_editar")
+  //     .forEach((element) => {
+  //       element.addEventListener("click", (event) => {
+  //         console.log(event);
+  //         myModal.show();
+  //       });
+  //     });
 
-        let div2 = document.createElement("div");
-        div2.id = "Tarjeta" + i;
-        div2.classList.add('card', 'ms-3', 'mb-3', 'card-home');
-        document.getElementById("Columna" + i).appendChild(div2);
+  // --------- función para editar cada card del home-historial Modificado por Pablo------------
 
+  function editarCard(indice) {
+    itemIdEditado = indice;
+    myModal.show();
+    inputTipoModal.value = historial[itemIdEditado].tipo;
+    console.log(inputTipoModal);
 
-        let div3 = document.createElement("div");
+    inputConceptoModal.value = historial[itemIdEditado].concepto;
+    console.log(inputConceptoModal);
+    inputMontoModal.value = historial[itemIdEditado].monto;
+    inputFechaModal.value = historial[itemIdEditado].fecha;
+  }
 
-        div3.id = "Cuerpo" + i;
-
-        div3.classList.add('card-body');
-
-        div3.innerHTML = `
-
-        <div>
-           <div class="text-end">
-              <button id="button_eliminar" class="btn button_eliminar_card">X</button>
-           </div>
-
-           <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
-           <p class='card-text text-center parrafo_historial'>  ${eltipo}  </p>
-           <p class='card-text text-center parrafo_historial'> Concepto: ${elconcepto} </p>
-           <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
-
-           <div class="text-center">
-              <button id="button_editar" type="button" class="btn button_editar_card">Editar</button>
-           </div>
-        </div>
-
-        `;
-
-        document.getElementById("Tarjeta" + i).appendChild(div3);
-
-
-        //--------------------- donde se colocará la fecha del último movimiento ----------------------
-
-        let ultimoMov = document.querySelector('#last_movimiento')
-        ultimoMov.innerHTML = historial[historial.length - 1].fecha.split("-").reverse().join("-");
-
-
+  function updateModal() {
+    let itemModificado = {
+      concepto: inputConceptoModal.value,
+      fecha: inputFechaModal.value,
+      monto: inputMontoModal.value,
+      tipo: inputTipoModal.value,
     };
-
-    // --- functión para calcular y mostrar la suma del ingreso o egreso de todos mis movimientos ------
-
-    const calcularPresupuesto = (array) => {
-        let valor = 0;
-
-        for (let i = 0; i < array.length; i++) {
-            switch (array[i].tipo) {
-                case "Ingreso":
-                    valor += parseFloat(array[i].monto);
-                    break;
-                case "Egreso":
-                    valor -= parseFloat(array[i].monto);
-                    break;
-            }
-        }
-        return valor;
-    };
-
-    // ---------------- Donde debe ir el monto del presupuesto le asigno la función ---------------------
-
-    let montoPresupuesto = document.querySelector('#monto_presupuesto')
+    historial[itemIdEditado] = itemModificado;
+    console.log(historial[itemIdEditado]);
+    localStorage.setItem("movimientos", JSON.stringify(historial));
+    agregarMovimiento();
     montoPresupuesto.innerHTML = calcularPresupuesto(historial);
+    myModal.hide();
+  }
 
+  // ---------------- Mostrar el nombre del usuario en la card del presupuesto -------------------
 
-    // ---------------------- función para abrir el modal para editar card ------------------------
+  let NombreDeUsuario = document.getElementById("NombreDeUsuario");
 
-    let myModal = new bootstrap.Modal(document.getElementById('editar_card'), {
-        keyboard: false
-    });
+  NombreDeUsuario.innerHTML +=
+    " " + JSON.parse(localStorage.usuarioLogueado) + "!";
 
-    buttonEditar = document.querySelectorAll('#button_editar').forEach(element => {
+  // ------------------------ eventos botón movimientos y botón cerrar sesión ------------------------
 
-        element.addEventListener('click', event => {
+  function backToMovimientos(e) {
+    console.log(e);
 
-            console.log(event)
-            myModal.show()
+    location.replace("./movimiento.html");
+  }
 
-        });
+  let buttonMovimiento = document.querySelector("#button_movimiento");
+  buttonMovimiento.addEventListener("click", backToMovimientos);
 
-    });
+  // ---------------------------------------------------------------------------------------------
 
+  function backToLogin(e) {
+    console.log(e);
 
-    // ------------------------- función para editar cada card del home-historial ---------------------
+    localStorage.removeItem("usuarioLogueado");
 
-    let inputTipoModal = document.querySelector("#input_tipo_modal").value;
-    let inputConceptoModal = document.querySelector("#input_concepto_modal").value;
-    let inputFechaModal = document.querySelector("#input_fecha_modal").value;
-    let inputMontoModal = document.querySelector("#input_monto_modal").value;
+    location.replace("../index.html");
+  }
 
-    const editarCard = function () {
+  let buttonCerrarSesion = document.querySelector("#button_cerrar_sesion");
+  buttonCerrarSesion.addEventListener("click", backToLogin);
 
+  // --------------función para borrar card del historialmodificado por Pablo-------------------
 
-    };
-
-    // ---------------- Mostrar el nombre del usuario en la card del presupuesto -------------------
-
-    let NombreDeUsuario = document.getElementById('NombreDeUsuario');
-
-    NombreDeUsuario.innerHTML += " " + JSON.parse(localStorage.usuarioLogueado) + "!";
-
-    // ------------------------ eventos botón movimientos y botón cerrar sesión ------------------------
-
-
-
-    function backToMovimientos(e) {
-
-        console.log(e)
-
-        location.replace("./movimiento.html");
-    };
-
-    let buttonMovimiento = document.querySelector('#button_movimiento');
-    buttonMovimiento.addEventListener('click', backToMovimientos);
-
-    // ---------------------------------------------------------------------------------------------
-
-    function backToLogin(e) {
-
-        console.log(e)
-
-        localStorage.removeItem('usuarioLogueado')
-
-        location.replace("../index.html");
-    };
-
-    let buttonCerrarSesion = document.querySelector('#button_cerrar_sesion');
-    buttonCerrarSesion.addEventListener('click', backToLogin);
-
-    // ------------------------------ función para borrar card del historial -----------------------------
-
-    const borrarCard = function () {
-
-        let validar = confirm('Está seguro de eliminar este movimiento del historial?');
-
-        if (validar) {
-
-
-
-            // movimientos.splice(indice, 1);
-            // localStorage.setItem("movimientos", JSON.stringify(movimientos));
-            // agregarMovimiento();
-            // alert('Movimiento Eliminado')
-        };
-
-    };
-
-};
+  function borrarCard(indice) {
+    console.log(indice);
+    let validar = confirm(
+      "Está seguro de eliminar este movimiento del historial?"
+    );
+    if (validar) {
+      movimientos.splice(indice, 1);
+      localStorage.setItem("movimientos", JSON.stringify(movimientos));
+      historial = JSON.parse(localStorage.getItem("movimientos"));
+      agregarMovimiento();
+      alert("Movimiento Eliminado");
+    }
+  }
+}
 
 // -----------------------------------------------------------------------------------------------------
 
+//código Pablo-------------------------------------------------
+
+function agregarMovimiento() {
+  document.querySelector("#contenedorHistorial").innerHTML = "";
+
+  for (let i = 0; i < historial.length; i++) {
+    const eltipo = historial[i].tipo;
+    const elconcepto = historial[i].concepto;
+    const elmonto = historial[i].monto;
+    const lafecha = historial[i].fecha;
+    const identificador = historial[i].id;
+
+    console.log(eltipo, elconcepto, elmonto, lafecha, identificador);
+
+    let div = document.createElement("div");
+    div.id = "Fila" + i; //Asigna un id diferente a cada div
+    div.classList.add("row");
+    document.getElementById("contenedorHistorial").appendChild(div);
+
+    let div1 = document.createElement("div");
+    div1.id = "Columna" + i;
+    div1.classList.add(
+      "col-12",
+      "col-md-12",
+      "col-lg-12",
+      "d-flex",
+      "flex-column",
+      "flex-md-row",
+      "flex-lg-row"
+    );
+    document.getElementById("Fila" + i).appendChild(div1);
+
+    let div2 = document.createElement("div");
+    div2.id = "Tarjeta" + i;
+    div2.classList.add("card", "ms-3", "mb-3", "card-home");
+    document.getElementById("Columna" + i).appendChild(div2);
+
+    let div3 = document.createElement("div");
+
+    div3.id = "Cuerpo" + i;
+
+    div3.classList.add("card-body");
+
+    div3.innerHTML = `
+    
+            <div>
+               <div class="text-end">
+                  <button id="button_eliminar" class="btn button_eliminar_card" onclick="borrarCard(${i})">X</button>
+               </div>
+    
+               <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
+               <p class='card-text text-center parrafo_historial'>  ${eltipo}  </p>
+               <p class='card-text text-center parrafo_historial'> Concepto: ${elconcepto} </p>
+               <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
+    
+               <div class="text-center">
+                  <button id="button_editar" type="button" class="btn button_editar_card" onClick="editarCard(${i})">Editar</button>
+               </div>
+            </div>
+    
+            `;
+
+    document.getElementById("Tarjeta" + i).appendChild(div3);
+
+    //--------------------- donde se colocará la fecha del último movimiento ----------------------
+
+    let ultimoMov = document.querySelector("#last_movimiento");
+    ultimoMov.innerHTML = historial[historial.length - 1].fecha
+      .split("-")
+      .reverse()
+      .join("-");
+  }
+}
+
+//Capturo boton del modal donde se guarda la edición
+botonUpdate.addEventListener("click", () => {
+  updateModal();
+});
