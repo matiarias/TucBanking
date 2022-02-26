@@ -198,7 +198,9 @@ function agregarMovimiento() {
                <h5 class='card-title text-center title_historial'> $ ${elmonto} </h5> 
                <p class='card-text text-center parrafo_historial'>  ${eltipo}  </p>
                <p class='card-text text-center parrafo_historial'> Concepto: ${elconcepto} </p>
-               <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${lafecha} </small></p>
+               <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${ordenarFecha(
+                 lafecha
+               )} </small></p>
     
                <div class="text-center">
                   <button id="button_editar" type="button" class="btn button_editar_card" onClick="editarCard(${i})">Editar</button>
@@ -223,3 +225,8 @@ function agregarMovimiento() {
 botonUpdate.addEventListener("click", () => {
   updateModal();
 });
+
+//funcion para acomodar fecha
+function ordenarFecha(fecha) {
+  return fecha.split("-").reverse().join("-");
+}
