@@ -199,8 +199,8 @@ function agregarMovimiento() {
                <p class='card-text text-center parrafo_historial'>  ${eltipo}  </p>
                <p class='card-text text-center parrafo_historial'> Concepto: ${elconcepto} </p>
                <p class='card-text text-center parrafo_historial'> <small class='text-muted'> ${ordenarFecha(
-                 lafecha
-               )} </small></p>
+      lafecha
+    )} </small></p>
     
                <div class="text-center">
                   <button id="button_editar" type="button" class="btn button_editar_card" onClick="editarCard(${i})">Editar</button>
