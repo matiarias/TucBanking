@@ -63,7 +63,7 @@ if (document.URL.includes("home.html")) {
   //       });
   //     });
 
-  // --------- función para editar cada card del home-historial Modificado por Pablo------------
+  // --------- función para editar cada card del home-historial ------------
 
   function editarCard(indice) {
     itemIdEditado = indice; //guardo indice en variable global
@@ -125,7 +125,7 @@ if (document.URL.includes("home.html")) {
   let buttonCerrarSesion = document.querySelector("#button_cerrar_sesion");
   buttonCerrarSesion.addEventListener("click", backToLogin);
 
-  // --------------función para borrar card del historialmodificado por Pablo-------------------
+  // -------------- función para borrar card del historialmodificado -------------------
 
   function borrarCard(indice) {
     console.log(indice);
@@ -143,8 +143,6 @@ if (document.URL.includes("home.html")) {
 }
 
 // -----------------------------------------------------------------------------------------------------
-
-//código Pablo-------------------------------------------------
 
 //Funcion para cargar las tarjetas de movimientos
 function agregarMovimiento() {
